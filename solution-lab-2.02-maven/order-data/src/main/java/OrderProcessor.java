@@ -1,7 +1,5 @@
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -38,9 +36,9 @@ public class OrderProcessor {
         """;
 
         Gson gson = new Gson();
+        Order[] arr = gson.fromJson(json, Order[].class);
 
-        Type listType = new TypeToken<List<Order>>() {}.getType();
-        return gson.fromJson(json, listType);
+        return Arrays.asList(arr);
     }
 
     public static void main(String[] args){
